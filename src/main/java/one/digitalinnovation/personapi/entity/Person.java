@@ -17,8 +17,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@Entity
+@Entity //Essa anotação inidica que essa classe é uma entididade 
 @Data
 @Builder
 @AllArgsConstructor
@@ -35,10 +34,14 @@ public class Person {
 	@Column(nullable = false)
 	private String lastName;
 	
+	/*unique = true : é uma Constraint só será possível cadastrar pessoas na tabela pessoas com CPF unico. 
+	 * Vantagem: A indexação fica mais facíl e as consulta utilizando os dados unicos tem mais performance.
+	 * O JPA automaticamente coloca essa constraint ao declarar o unique.
+	 * */
 	@Column(nullable = false, unique = true)
 	private String cpf;
 	
-	private LocalDate bithDate;
+	private LocalDate birthDate;// Aqui não se dá obrigatoriedade a inserção da data de nascimento
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private List<Phone> phones;

@@ -1,5 +1,6 @@
 package one.digitalinnovation.personapi.DTO.resquest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -36,7 +37,7 @@ public class PersonDTO {
 	
 	private String birthDate;
 	
-	@Valid
+	@Valid 
 	@NotEmpty
 	private List<PhoneDTO> phones;
 }
